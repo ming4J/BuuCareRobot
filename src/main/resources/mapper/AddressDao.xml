@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.buu.yykj.dao.AddressDao">
+
+    <select id="queryAddress" resultType="cn.edu.buu.yykj.entity.Address">
+        SELECT
+            roomInfo.pX,roomInfo.pY,roomInfo.pZ,roomInfo.oX,roomInfo.oY,roomInfo.oZ,roomInfo.oW
+        FROM
+            roomInfo
+        where
+            roomId = #{roomId}
+    </select>
+    <select id="queryLock" resultType="integer">
+        SELECT
+            `lock`.count
+        FROM
+            `lock`
+    </select>
+    <update id="updateUseLock" parameterType="integer">
+        UPDATE `lock` SET `lock`.count = #{code}
+    </update>
+</mapper>
